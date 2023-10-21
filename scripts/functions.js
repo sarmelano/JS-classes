@@ -1,7 +1,6 @@
-function createForm(id, className) {
+function createForm(id) {
   const form = document.createElement('form');
   form.id = id;
-  form.className = className;
   return form;
 }
 

@@ -1,4 +1,4 @@
-const form1 = createForm('form1', 'house-form');
+const form1 = createForm('form1');
 const fields1 = [
   { label: 'Адрес дома:', id: 'address' },
   { label: 'Кол-во этажей:', id: 'floors' },
@@ -12,7 +12,7 @@ addButtonToForm(form1, 'house-form_btn', 'Далее', function () {
 
   form1.classList.add('hidden');
 
-  const form2 = createForm('form2', 'appartment-form');
+  const form2 = createForm('form2');
   const fields2 = Array.from({ length: apartmentsCount }, (_, i) => [
     { label: 'Номер ' + (i + 1) + ' квартиры:', id: `number${i + 1}` },
     { label: 'Кол-во комнат:', id: `roomsAmount${i + 1}` },
@@ -24,7 +24,7 @@ addButtonToForm(form1, 'house-form_btn', 'Далее', function () {
 
     form2.classList.add('hidden');
 
-    const form3 = createForm('form3', '');
+    const form3 = createForm('form3');
     residentsCounts.forEach((residentsCount, i) => {
       const wrapper = document.createElement('div');
       wrapper.className = 'wrapper';
