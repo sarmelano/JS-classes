@@ -65,12 +65,17 @@ function addFieldsToForm(form, fields) {
     input.id = field.id;
     input.setAttribute('autocomplete', 'off');
 
+    const errorSpan = document.createElement('span');
+    errorSpan.id = field.id + 'Error';
+    errorSpan.style.color = 'red';
+
     if (field.id.startsWith('number')) {
       input.classList.add('shortest_input');
     }
 
     wrapper.appendChild(label);
     wrapper.appendChild(input);
+    wrapper.appendChild(errorSpan);
     form.appendChild(wrapper);
   });
 }
@@ -83,7 +88,26 @@ function addButtonToForm(form, id, value, eventListener) {
   button.type = 'button';
   button.id = id;
   button.value = value;
-  button.addEventListener('click', eventListener);
+
+  button.addEventListener('click', (event) => {
+    const inputFields = Array.from(form.querySelectorAll('input[type="text"]'));
+    let allFieldsFilled = true;
+
+    for (let i = 0; i < inputFields.length; i++) {
+      const inputField = inputFields[i];
+      const errorSpan = document.getElementById(inputField.id + 'Error');
+      if (inputField.value === '') { 
+        errorSpan.textContent = 'Пожалуйста, заполните это поле';
+        allFieldsFilled = false;
+      } else {
+        errorSpan.textContent = '';
+      }
+    }
+
+    if (allFieldsFilled) {
+      eventListener(event);
+    }
+  });
 
   buttonWrapper.appendChild(button);
   form.appendChild(buttonWrapper);
@@ -132,8 +156,13 @@ addButtonToForm(form1, 'house-form_btn', 'Далее', function () {
         input.type = 'text';
         input.id = `resident${i + 1}_${j}`;
 
+        const errorSpan = document.createElement('span');
+        errorSpan.id = input.id + 'Error';
+        errorSpan.style.color = 'red';
+
         wrapper.appendChild(label);
         wrapper.appendChild(input);
+        wrapper.appendChild(errorSpan);
       }
 
       form3.appendChild(wrapper);
