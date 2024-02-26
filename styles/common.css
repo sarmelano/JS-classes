@@ -15,7 +15,7 @@ form {
   margin: 0 auto;
 }
 
-/* Общий стиль для обёртки полей */
+/* Global container */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -23,25 +23,25 @@ form {
   width: 100%;
 }
 
-/* Стиль для меток полей */
+/* Label */
 .wrapper label {
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-/* Стиль для полей ввода */
+/* Input */
 .wrapper input[type="text"] {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
 
-/* Стиль для кратких полей ввода */
+/* Short input */
 .wrapper input[type="text"].shortest_input {
   width: 30%;
 }
 
-/* Стиль для кнопок */
+/* Btn */
 .wrapper input[type="button"] {
   padding: 10px 20px;
   border: none;
@@ -51,12 +51,12 @@ form {
   cursor: pointer;
 }
 
-/* Стиль для кнопок при наведении */
+/* Btn hov */
 .wrapper input[type="button"]:hover {
   background-color: #45a049;
 }
 
-/* Стиль для сообщений об ошибках */
+/* Errors */
 .wrapper span {
   color: red;
   margin-top: 5px;

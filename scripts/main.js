@@ -1,11 +1,11 @@
 const form1 = createForm('form1');
 const fields1 = [
-  { label: 'Адрес дома:', id: 'address' },
-  { label: 'Кол-во этажей:', id: 'floors' },
-  { label: 'Кол-во квартир:', id: 'apartments' }
+  { label: 'Home address:', id: 'address' },
+  { label: 'Qty of floors:', id: 'floors' },
+  { label: 'Qty of apartments:', id: 'apartments' }
 ];
 addFieldsToForm(form1, fields1);
-addButtonToForm(form1, 'house-form_btn', 'Далее', function () {
+addButtonToForm(form1, 'house-form_btn', 'Next', function () {
   const address = getInputValue('address');
   const floors = parseInt(getInputValue('floors'));
   const apartmentsCount = parseInt(getInputValue('apartments'));
@@ -14,12 +14,12 @@ addButtonToForm(form1, 'house-form_btn', 'Далее', function () {
 
   const form2 = createForm('form2');
   const fields2 = Array.from({ length: apartmentsCount }, (_, i) => [
-    { label: 'Номер ' + (i + 1) + ' квартиры:', id: `number${i + 1}` },
-    { label: 'Кол-во комнат:', id: `roomsAmount${i + 1}` },
-    { label: 'Кол-во жильцов:', id: `residents${i + 1}` }
+    { label: 'Number ' + (i + 1) + ' floor:', id: `number${i + 1}` },
+    { label: 'Qty of rooms:', id: `roomsAmount${i + 1}` },
+    { label: 'Qty occupants:', id: `residents${i + 1}` }
   ]).flat();
   addFieldsToForm(form2, fields2);
-  addButtonToForm(form2, 'apartment-form_btn', 'Далее', function () {
+  addButtonToForm(form2, 'apartment-form_btn', 'Next', function () {
     const residentsCounts = Array.from({ length: apartmentsCount }, (_, i) => parseInt(getInputValue(`residents${i + 1}`)));
 
     form2.classList.add('hidden');
@@ -31,7 +31,7 @@ addButtonToForm(form1, 'house-form_btn', 'Далее', function () {
 
       for (let j = 1; j <= residentsCount; j++) {
         const label = document.createElement('label');
-        label.textContent = `Имя жильца ${j} в квартире ${i + 1}:`;
+        label.textContent = `Occupant Name ${j} in room ${i + 1}:`;
 
         const input = document.createElement('input');
         input.type = 'text';
@@ -48,7 +48,7 @@ addButtonToForm(form1, 'house-form_btn', 'Далее', function () {
 
       form3.appendChild(wrapper);
     });
-    addButtonToForm(form3, 'resident-form_btn', 'Готово', function () {
+    addButtonToForm(form3, 'resident-form_btn', 'Done', function () {
       const residents = [];
       const apartments = [];
 

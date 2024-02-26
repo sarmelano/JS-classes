@@ -50,7 +50,7 @@ function addButtonToForm(form, id, value, eventListener) {
       const inputField = inputFields[i];
       const errorSpan = document.getElementById(inputField.id + 'Error');
       if (inputField.value === '') {
-        errorSpan.textContent = 'Пожалуйста, заполните это поле';
+        errorSpan.textContent = 'Required';
         allFieldsFilled = false;
       } else {
         errorSpan.textContent = '';
